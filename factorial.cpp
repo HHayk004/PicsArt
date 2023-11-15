@@ -1,6 +1,6 @@
 #include <iostream>
 
-long long factorial(int);
+long long factorial_iterative(int);
 
 int main()
 {
@@ -11,12 +11,12 @@ int main()
         std::cin >> num;
     } while (num < 0);
 
-    std::cout << factorial(num) << std::endl;
+    std::cout << factorial_iterative(num) << std::endl;
 
     return 0;
 }
 
-long long factorial(int n)
+long long factorial_iterative(int n)
 {
     long long answer = 1;
     for (int i = 1; i <= n; ++i)
