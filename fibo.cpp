@@ -23,10 +23,10 @@ long long fibonacci(int n)
         return n;
     }
 
-    int prev = 0, next = 1;
+    long long prev = 0, next = 1;
     for (int i = 1; i < n; ++i)
     {
-        int tmp = prev;
+        long tmp = prev;
         prev = next;
         next += tmp;
     }
