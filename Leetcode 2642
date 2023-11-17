@@ -1,0 +1,49 @@
+class Graph {
+public:
+    int size;
+    int** graph;
+    Graph(int n, vector<vector<int>>& edges) {
+        size = n;
+        graph = new int* [size];
+        for (int i = 0; i < size; ++i)
+        {
+            graph[i] = new int [size]{0};
+        }
+
+        for (int i = 0; i < edges.size(); ++i)
+        {
+            graph[edges[i][0]][edges[i][1]] = edges[i][2];
+        }
+    }
+
+    ~Graph() {
+        for (int i = 0; i < size; ++i)
+        {
+            delete[] graph[i];
+        }
+        delete[] graph;
+    }
+    
+    void addEdge(vector<int> edge) {
+        graph[edge[0]][edge[1]] = edge[2];
+    }
+    
+    int shortestPath(int node1, int node2) {
+        if (node1 == node2)
+        {
+            return 0;
+        }
+        int answer = -1;
+        for (int i = 0; i < size; ++i)
+        {
+            if (graph[node1][i])
+            {
+                int tmp = graph[node1][i] + shortestPath(i, node2);
+                if (tmp && (!answer || tmp < answer))
+                {
+                    answer = tmp;
+                }
+            }
+        }
+    }
+};
